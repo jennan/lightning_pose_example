@@ -44,7 +44,7 @@ The last saved checkpoints is named `last.ckpt`.
 
 To restart training for a saved checkpoint, you can use the `training.ckpt_path` option:
 
-- either edit the corresponding option in you configuration file,
+- either edit the corresponding option in the configuration file,
 - or add it to command line call in `slurm/train_test.sl`, for example
 
 ```bash
