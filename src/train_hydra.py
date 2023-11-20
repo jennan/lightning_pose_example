@@ -65,6 +65,9 @@ def train(cfg: DictConfig):
     # early stopping, learning rate monitoring, model checkpointing, backbone unfreezing
     callbacks = get_callbacks(cfg, early_stopping=False)
 
+    # add explicit model checkpointing to ensure a pointer to last checkpoint
+    callbacks.append(pl.callbacks.model_checkpoint.ModelCheckpoint(save_last=True))
+
     # calculate number of batches for both labeled and unlabeled data per epoch
     limit_train_batches = calculate_train_batches(cfg, dataset)
 
@@ -84,7 +87,7 @@ def train(cfg: DictConfig):
     )
 
     # train model!
-    trainer.fit(model=model, datamodule=data_module)
+    trainer.fit(model=model, datamodule=data_module, ckpt_path=cfg.training.ckpt_path)
 
     # ----------------------------------------------------------------------------------
     # Post-training analysis

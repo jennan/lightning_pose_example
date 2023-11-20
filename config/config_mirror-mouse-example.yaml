@@ -48,6 +48,8 @@ data:
   columns_for_singleview_pca: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14]
 
 training:
+  # ABSOLUTE path of a checkpointed model and training state to restart from
+  ckpt_path: null
   # select from one of several predefined image/video augmentation pipelines
   # default: resizing only
   # dlc: imgaug pipeline implemented in DLC 2.0 package

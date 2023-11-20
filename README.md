@@ -36,3 +36,20 @@ sbatch --account NESI_ACCOUNT slurm/train_test.sl
 ```
 
 where `NESI_ACCOUNT` is your NeSI project ID.
+
+Results are saved in a folder named using the starting date, e.g. `outputs/2023-11-23/10-01-22` if your job started at 10:01:22 on 23/11/2023.
+
+Model and training states are saved in a subfolder `tb_logs/my_base_toy_model/version_0/checkpoints/`.
+The last saved checkpoints is named `last.ckpt`.
+
+To restart training for a saved checkpoint, you can use the `training.ckpt_path` option:
+
+- either edit the corresponding option in you configuration file,
+- or add it to command line call in `slurm/train_test.sl`, for example
+
+```bash
+CKPT_PATH="$(realpath outputs/2023-11-23/10-01-22/tb_logs/my_base_toy_model/version_0/checkpoints/last.ckpt)"
+venv/bin/python3 src/train_hydra.py training.ckpt_path="${CKPT_PATH}"
+```
+
+Note that this path needs to be **absolute**, hence the use of `realpath` in the snippet above.
