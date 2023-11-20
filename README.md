@@ -8,7 +8,7 @@ This repository provides example usage of [Lightning Pose](https://github.com/da
 Clone this repository
 
 ```
-git clone TODO_REPO_URL
+git clone https://github.com/jennan/lightning_pose_example.git
 cd lightning_pose_example
 ```
 
