@@ -220,7 +220,7 @@ eval:
   save_vids_after_training: true
   fiftyone:
     # will be the name of the dataset (Mongo DB) created by FiftyOne. for video dataset, we will append dataset_name + "_video"
-    dataset_name: rick_data_test
+    dataset_name: mouse_data
     build_speed: slow # slow/fast. "fast" drops keypoint name and confidence information for faster processing.
     # if you want to manually provide a different model name to be displayed in FiftyOne
     model_display_names: ["test_model"]
